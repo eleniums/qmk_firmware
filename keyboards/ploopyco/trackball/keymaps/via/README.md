@@ -2,9 +2,12 @@
 https://ploopy.co/classic-trackball/
 
 ## Instructions
-Follow these instructions to flash updated firmware, keymaps, etc. using QMK.
+Follow these instructions to use QMK to flash updated firmware, keymaps, etc.
 
-1. Make any changes to firmware files first.
+1. Make any changes to firmware files first. Use the QMK repo; this fork is only for tracking changes.
+    
+    QMK pulled the entire repo and submodules to: `C:\Users\eleni\qmk_firmware`
+    
 2. Open Windows terminal and open the QMK MSYS profile.
 3. Build the firmware with:
     ```
@@ -16,6 +19,8 @@ Follow these instructions to flash updated firmware, keymaps, etc. using QMK.
 
 4. Put the Ploopy into bootloader mode (see below).
 5. Flash using the QMK Toolbox: https://github.com/qmk/qmk_toolbox
+
+    I currently have the toolbox exe at: `C:\apps\qmk`
 
 All done!
 
