@@ -18,4 +18,10 @@
 
 #pragma once
 
+// Fix the drag scroll functionality (assign drag scroll to button in Via)
+// https://www.reddit.com/r/ploopy/comments/k1c7sh/comment/gy6d64t/
+#define PLOOPY_DRAGSCROLL_FIXED
+#define PLOOPY_DRAGSCROLL_DPI 100 // Fixed-DPI Drag Scroll
+#define PLOOPY_DRAGSCROLL_INVERT // Invert the scrolling direction
+
 #define DYNAMIC_KEYMAP_LAYER_COUNT 8
