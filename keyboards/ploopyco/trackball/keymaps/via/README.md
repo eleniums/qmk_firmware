@@ -4,10 +4,7 @@ https://ploopy.co/classic-trackball/
 ## Instructions
 Follow these instructions to use QMK to flash updated firmware, keymaps, etc.
 
-1. Make any changes to firmware files first. Use the QMK repo; this fork is only for tracking changes.
-    
-    QMK pulled the entire repo and submodules to: `C:\Users\eleni\qmk_firmware`
-    
+1. Make any changes to firmware files first.
 2. Open Windows terminal and open the QMK MSYS profile.
 3. Build the firmware with:
     ```
