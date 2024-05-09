@@ -8,7 +8,7 @@ Follow these instructions to use QMK to flash updated firmware, keymaps, etc.
 2. Open Windows terminal and open the QMK MSYS profile.
 3. Build the firmware with:
     ```
-    qmk compile -kb ploopyco/trackball/rev1_005 -km via
+    qmk compile -kb ploopyco/trackball/rev1_005 -km drag_scroll_fixed
     ```
 
     This sets the Ploopy up for Via, so use that for keymaps:
