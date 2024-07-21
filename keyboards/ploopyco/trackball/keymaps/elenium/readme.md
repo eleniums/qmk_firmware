@@ -1,4 +1,4 @@
-# Ploopy Trackball Classic
+# Ploopy Classic Trackball
 https://ploopy.co/classic-trackball/
 
 ## Instructions
@@ -21,7 +21,7 @@ Follow these instructions to use QMK to flash updated firmware, keymaps, etc.
 
 All done!
 
-## Putting the Ploopy Trackball into bootloader mode
+## Putting the Ploopy into bootloader mode
 Instructions from: https://github.com/ploopyco/classic-trackball/wiki/Appendix-C:-QMK-Firmware-Programming#putting-the-ploopy-trackball-into-bootloader-mode
 
 1. Unplug it from your computer.
@@ -34,3 +34,4 @@ And that's it. While plugged in this way, the Ploopy Trackball will accept new f
 - https://github.com/ploopyco/classic-trackball/wiki/Appendix-C:-QMK-Firmware-Programming
 - https://docs.qmk.fm/#/newbs_building_firmware
 - https://docs.qmk.fm/#/newbs_flashing
+- https://thomasbaart.nl/2018/12/01/reducing-firmware-size-in-qmk/
