@@ -148,9 +148,6 @@ report_mouse_t pointing_device_task_kb(report_mouse_t mouse_report) {
         // Clear the X and Y values of the mouse report
         mouse_report.x = 0;
         mouse_report.y = 0;
-
-        mouse_report.x = 0;
-        mouse_report.y = 0;
     }
 
     return pointing_device_task_user(mouse_report);
