@@ -145,6 +145,14 @@ report_mouse_t pointing_device_task_kb(report_mouse_t mouse_report) {
         scroll_accumulated_h -= (int8_t)scroll_accumulated_h;
         scroll_accumulated_v -= (int8_t)scroll_accumulated_v;
 
+        // Disable scrolling directions if requested
+        #ifdef PLOOPY_DRAGSCROLL_DISABLE_H
+            mouse_report.h = 0;
+        #endif
+        #ifdef PLOOPY_DRAGSCROLL_DISABLE_V
+            mouse_report.v = 0;
+        #endif
+
         // Clear the X and Y values of the mouse report
         mouse_report.x = 0;
         mouse_report.y = 0;
