@@ -63,10 +63,12 @@ uint16_t          dpi_array[] = PLOOPY_DPI_OPTIONS;
 #define DPI_OPTION_SIZE ARRAY_SIZE(dpi_array)
 
 // Trackball State
-bool  is_scroll_clicked    = false;
-bool  is_drag_scroll       = false;
-float scroll_accumulated_h = 0;
-float scroll_accumulated_v = 0;
+bool  is_scroll_clicked         = false;
+bool  is_drag_scroll            = false;
+bool  is_drag_scroll_vertical   = false;
+bool  is_drag_scroll_horizontal = false;
+float scroll_accumulated_h      = 0;
+float scroll_accumulated_v      = 0;
 
 #ifdef ENCODER_ENABLE
 uint16_t lastScroll        = 0; // Previous confirmed wheel event
@@ -132,6 +134,14 @@ void toggle_drag_scroll(void) {
     is_drag_scroll ^= 1;
 }
 
+void toggle_drag_scroll_vertical(void) {
+    is_drag_scroll_vertical ^= 1;
+}
+
+void toggle_drag_scroll_horizontal(void) {
+    is_drag_scroll_horizontal ^= 1;
+}
+
 void cycle_dpi(void) {
     keyboard_config.dpi_config = (keyboard_config.dpi_config + 1) % DPI_OPTION_SIZE;
     eeconfig_update_kb(keyboard_config.raw);
@@ -139,7 +149,7 @@ void cycle_dpi(void) {
 }
 
 report_mouse_t pointing_device_task_kb(report_mouse_t mouse_report) {
-    if (is_drag_scroll) {
+    if (is_drag_scroll || is_drag_scroll_vertical || is_drag_scroll_horizontal) {
         scroll_accumulated_h += (float)mouse_report.x / PLOOPY_DRAGSCROLL_DIVISOR_H;
         scroll_accumulated_v += (float)mouse_report.y / PLOOPY_DRAGSCROLL_DIVISOR_V;
 
@@ -155,13 +165,13 @@ report_mouse_t pointing_device_task_kb(report_mouse_t mouse_report) {
         scroll_accumulated_h -= (int8_t)scroll_accumulated_h;
         scroll_accumulated_v -= (int8_t)scroll_accumulated_v;
 
-        // Disable scrolling directions if requested
-        #ifdef PLOOPY_DRAGSCROLL_DISABLE_H
+        if (!is_drag_scroll && !is_drag_scroll_horizontal) {
             mouse_report.h = 0;
-        #endif
-        #ifdef PLOOPY_DRAGSCROLL_DISABLE_V
+        }
+
+        if (!is_drag_scroll && !is_drag_scroll_vertical) {
             mouse_report.v = 0;
-        #endif
+        }
 
         // Clear the X and Y values of the mouse report
         mouse_report.x = 0;
@@ -192,12 +202,28 @@ bool process_record_kb(uint16_t keycode, keyrecord_t* record) {
         cycle_dpi();
     }
 
-    if (keycode == DRAG_SCROLL) {
+    if (keycode == DRAG_SCROLL || keycode == DRAG_SCROLL_V || keycode == DRAG_SCROLL_H) {
 #ifdef PLOOPY_DRAGSCROLL_MOMENTARY
-        is_drag_scroll = record->event.pressed;
+        if (keycode == DRAG_SCROLL) {
+            is_drag_scroll = record->event.pressed;
+        }
+        if (keycode == DRAG_SCROLL_V) {
+            is_drag_scroll_vertical = record->event.pressed;
+        }
+        if (keycode == DRAG_SCROLL_H) {
+            is_drag_scroll_horizontal = record->event.pressed;
+        }
 #else
         if (record->event.pressed) {
-            toggle_drag_scroll();
+            if (keycode == DRAG_SCROLL) {
+                toggle_drag_scroll();
+            }
+            if (keycode == DRAG_SCROLL_V) {
+                toggle_drag_scroll_vertical();
+            }
+            if (keycode == DRAG_SCROLL_H) {
+                toggle_drag_scroll_horizontal();
+            }
         }
 #endif
     }
