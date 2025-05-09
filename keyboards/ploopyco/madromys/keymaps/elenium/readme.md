@@ -10,14 +10,13 @@ Follow these instructions to use QMK to flash updated firmware, keymaps, etc.
     ```
     qmk compile -kb ploopyco/madromys/rev1_001 -km elenium
     ```
-
-    This sets the Ploopy up for Via, so use that for keymaps:
-    https://usevia.app
-
 4. Put the Ploopy into bootloader mode (see below).
 5. Drag new ".uf2" file into Ploopy device folder.
 
 All done!
+
+This sets the Ploopy up for Via, so use that for keymaps:  
+https://usevia.app
 
 ## Putting the Ploopy into bootloader mode
 Instructions from: https://github.com/ploopyco/adept-trackball/wiki/Appendix-D%3A-QMK-Firmware-Programming#putting-the-ploopy-device-into-bootloader-mode
