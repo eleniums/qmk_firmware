@@ -10,16 +10,15 @@ Follow these instructions to use QMK to flash updated firmware, keymaps, etc.
     ```
     qmk compile -kb ploopyco/trackball/rev1_005 -km elenium
     ```
-
-    This sets the Ploopy up for Via, so use that for keymaps:
-    https://usevia.app
-
 4. Put the Ploopy into bootloader mode (see below).
 5. Flash using the QMK Toolbox: https://github.com/qmk/qmk_toolbox
 
-    I currently have the toolbox exe at: `C:\apps\qmk`
+I currently have the toolbox exe at: `C:\apps\qmk`
 
 All done!
+
+This sets the Ploopy up for Via, so use that for keymaps:  
+https://usevia.app
 
 ## Putting the Ploopy into bootloader mode
 Instructions from: https://github.com/ploopyco/classic-trackball/wiki/Appendix-C:-QMK-Firmware-Programming#putting-the-ploopy-trackball-into-bootloader-mode
